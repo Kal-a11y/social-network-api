@@ -26,6 +26,4 @@ const formatDate = (date) => {
     return date.format('ddd, MMM D, YYYY [at] hh:mm:ss a');
 }
 
-const Reaction = mongoose.model('reaction', reactionSchema);
-
-module.exports = Reaction;
+module.exports = reactionSchema;
