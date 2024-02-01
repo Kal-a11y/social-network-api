@@ -11,14 +11,14 @@ connection.once('open', async () => {
     console.log('✅ Seed connection success...')
 
     //Delete previous collections
-    let userCollections = await connection.db.listCollections({name: 'user'}).toArray();
+    let userCollections = await User.exists();
     if (userCollections){
-        await connection.dropCollection('user');
+        await User.deleteMany();
     }
 
-    let thoughtCollections = await connection.db.listCollections({name: 'thought'}).toArray();
+    let thoughtCollections = await Thought.exists();
     if (thoughtCollections){
-        await connection.dropCollection('thought');
+        await Thought.deleteMany();
     }
 
     //Create dataAmount of users and thought
@@ -26,7 +26,7 @@ connection.once('open', async () => {
     const thought = [];
     for (let i = 0; i < dataAmount; i++){
 
-        users.push({
+        user.push({
             username: usernamesData[i],
             email: emailsData[i],
             thoughts: thoughtsData[i],
