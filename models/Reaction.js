@@ -1,10 +1,14 @@
 const { Schema, model, default: mongoose } = require('mongoose');
 const dayjs = require('dayjs');
 
+const formatDate = (date) => {
+    return date.format('ddd, MMM D, YYYY [at] hh:mm:ss a');
+}
+
 const reactionSchema = new Schema({
     reactionId: {
         type: mongoose.ObjectId,
-        default: new ObjectId
+        default: mongoose.ObjectId
     },
     reactionBody: {
         type: String,
@@ -22,8 +26,6 @@ const reactionSchema = new Schema({
     }
 })
 
-const formatDate = (date) => {
-    return date.format('ddd, MMM D, YYYY [at] hh:mm:ss a');
-}
+
 
 module.exports = reactionSchema;
